@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] private float speed = 10.0f;
+    [SerializeField] private float speed = 7.0f;
     [SerializeField] private float upForce = 400.0f;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float groundCheckerRadius = 0.15f;
@@ -31,19 +31,12 @@ public class PlayerControl : MonoBehaviour
     {
         float horiz = Input.GetAxis("Horizontal");
         onGround = OnGroundChecker();
-        collideWall = CollideWallChecker();
 
 
         if (onGround && Input.GetAxis("Jump") > 0)
         {
             rBody2d.AddForce(new Vector2(0.0f, upForce));
             onGround = false;
-        }
-
-        if ((collideWall && Input.GetAxis("Horizontal") > 0) || (collideWall && Input.GetAxis("Horizontal") < 0))
-        {
-            rBody2d.velocity = (new Vector2(0.0f, rBody2d.velocity.y));
-            collideWall = true;
         }
 
         rBody2d.velocity = new Vector2(horiz * speed, rBody2d.velocity.y);
@@ -75,11 +68,6 @@ public class PlayerControl : MonoBehaviour
     private bool OnGroundChecker()
     {
         return Physics2D.OverlapCircle(groundChecker.position, groundCheckerRadius, whatIsGround); ;
-    }
-
-    private bool CollideWallChecker()
-    {
-        return Physics2D.OverlapCircle(collideWallChecker.position, wallCheckerRadius, whatIsGround); ;
     }
 
     private void Flip()
