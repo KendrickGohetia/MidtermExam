@@ -10076,7 +10076,6 @@ GameObject:
   - component: {fileID: 2139722921}
   - component: {fileID: 2139722920}
   - component: {fileID: 2139722919}
-  - component: {fileID: 2139722918}
   - component: {fileID: 2139722923}
   - component: {fileID: 2139722924}
   - component: {fileID: 2139722922}
@@ -10087,22 +10086,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!70 &2139722918
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2139722917}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.03412807, y: -0.085320234}
-  m_Size: {x: 1.152148, y: 1.8278823}
-  m_Direction: 0
 --- !u!50 &2139722919
 Rigidbody2D:
   serializedVersion: 4
@@ -10119,7 +10102,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 798baf5b407dda64ca9f07b83f3f3fe2, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -10202,7 +10185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa18e178e9b2164294231206f1e8168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 8
   upForce: 350
   whatIsGround:
     serializedVersion: 2

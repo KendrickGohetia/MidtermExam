@@ -11,7 +11,6 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Transform groundChecker;
     [SerializeField] private float wallCheckerRadius = 0.15f;
     [SerializeField] private Transform collideWallChecker;
-    //TEST ONLY PLEASE DELETE AFTER
 
     private Rigidbody2D rBody2d;
     private bool onGround = false;
@@ -41,11 +40,11 @@ public class PlayerControl : MonoBehaviour
             onGround = false;
         }
 
-        //if ((collideWall && Input.GetAxis("Horizontal") > 0) || (collideWall && Input.GetAxis("Horizontal") < 0))
-        //{
-        //    rBody2d.velocity = (new Vector2(0.0f, 0.0f));
-        //    collideWall = true;
-        //}
+        if ((collideWall && Input.GetAxis("Horizontal") > 0) || (collideWall && Input.GetAxis("Horizontal") < 0))
+        {
+            rBody2d.velocity = (new Vector2(0.0f, rBody2d.velocity.y));
+            collideWall = true;
+        }
 
         rBody2d.velocity = new Vector2(horiz * speed, rBody2d.velocity.y);
 
