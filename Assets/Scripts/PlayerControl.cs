@@ -12,15 +12,15 @@ public class PlayerControl : MonoBehaviour
 
     private Rigidbody2D rBody2d;
     private bool onGround = false;
-    private bool isCrouching = false;
+    private bool isDucking = false;
     private bool isFacingRight = true;
-    private Animator animator;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         rBody2d = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -35,16 +35,16 @@ public class PlayerControl : MonoBehaviour
             //rBody2d.velocity = new Vector2(0.0f, upForce);
             onGround = false;
         }
-
+        
         rBody2d.velocity = new Vector2(horiz * speed, rBody2d.velocity.y);
 
         if (onGround && rBody2d.velocity.x == 0 && Input.GetAxis("Vertical") < 0)
         {
-            isCrouching = true;
+            isDucking = true;
         }
         else
         {
-            isCrouching = false;
+            isDucking = false;
         }
 
         if (isFacingRight && rBody2d.velocity.x < 0)
@@ -56,6 +56,10 @@ public class PlayerControl : MonoBehaviour
             Flip();
         }
 
+        anim.SetFloat("xSpeed", Mathf.Abs(rBody2d.velocity.x));
+        anim.SetFloat("ySpeed", rBody2d.velocity.y);
+        anim.SetBool("isGrounded", onGround);
+        anim.SetBool("isDucking", isDucking);
     }
 
     private bool OnGroundChecker()
